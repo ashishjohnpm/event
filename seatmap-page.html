@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Seatmap</title>
+    <link rel="icon" href="images/favicon.ico" type="image/ico" sizes="16x16">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,  maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <script src="scripts/vendor/jquery-1.11.1.min.js"></script>
+    <link rel="stylesheet" href="styles/vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/main.css">
+  </head>
+  <body>
+    <!-- Site header starts here-->
+    <header class="header"></header>
+    <!-- Site header ends here-->
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-12">
+          <!-- seatmap starts here-->
+          <div class="seatmap">
+            <div class="seatmap__canvas">
+              <canvas id="seatmap-canvas" width="100%" height="450"></canvas>
+              <div role="alert" class="alert alert-info alert-dismissible fade in">
+                <button type="button" data-dismiss="alert" aria-label="Close" class="close"><span aria-hidden="true">×</span></button><strong>Click and drag the canvas to reposition.</strong> SHIFT + click to select multiple objects and drag to move as a group.
+              </div>
+            </div>
+            <div class="seatmap__aside">
+              <div class="seatmap__nav">
+                <ul>
+                  <li><a href="#1"><i aria-hidden="true" class="fa fa-braille"></i><span>Section</span></a></li>
+                  <li><a href="#2"><i aria-hidden="true" class="fa fa-columns"></i><span>Table</span></a></li>
+                  <li><a href="#3"><i aria-hidden="true" class="fa fa-microphone"></i><span>Object</span></a></li>
+                  <li><a href="#4"><i aria-hidden="true" class="fa fa-text-height"></i><span>Text</span></a></li>
+                </ul>
+              </div>
+              <div class="seatmap__info">
+                <h3>1</h3>
+                <select class="l-styled">
+                  <option value="section">Assigned</option>
+                  <option value="general">General</option>
+                </select>
+                <ul class="seatmap__list">
+                  <li>
+                    <label>Rows</label><span>5</span>
+                  </li>
+                  <li>
+                    <label>seats</label><span>10</span>
+                  </li>
+                </ul>
+                <button class="btn btn-primary btn-md">Submit</button>
+                <button class="btn btn-secondary btn-md">Cancel</button>
+              </div>
+            </div>
+          </div>
+          <!-- seatmap ends here-->
+        </div>
+      </div>
+    </div>
+    <!-- footer starts here-->
+    <footer class="footer"></footer>
+    <!-- footer ends here-->
+    <script src="scripts/vendor/bootstrap.min.js"></script>
+    <script src="scripts/script.js"></script>
+    <script></script>
+  </body>
+</html>
