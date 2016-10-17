@@ -1,33 +1,69 @@
 function SeatGroup(options){
-	this.rows = 0;
-	this.cols = 0;
-	this.options = options;
-	this.seat_group = null;	
+	var rows = 0;
+	var cols = 0;
+	//this.options = options;
+	this.group = null;	
     var self = this;
     this.isSelected = false;
 
+    var defaults = {
+    	rows: 0,
+    	cols:0,
+    	rotation:0,
+    	opacity: 0.5, 
+    	draggable: true
+    };
+
+    var settings = $.extend({}, defaults, options);
+
 	this.drawGroup = function(){
-		this.seat_group = new Konva.Group({
+		this.group = new Konva.Group({
 	        x: 120,
 	        y: 40,
-	        draggable: true,
-	        opacity: 0.5
+	        rotation: settings.rotation,
+	        draggable: settings.draggable,
+	        opacity: settings.opacity
 	    });
+	    this.group.offsetX(this.group.width() / 2);
+		this.group.offsetY(this.group.height() / 2);
 
-	    this.options['seats'].forEach(function(seats, i) {
+	    settings['seats'].forEach(function(seats, i) {
+	    	self.rows = i + 1;
 	    	seats.forEach(function(seat, j){
-	    		//console.log(self.seat_group)
+	    		self.cols = j + 1;
+	    		//console.log(self.group)
 	    		var circle = new Seat({
 		      		x:i,
 		      		y:j,
 		      		color:seat.color
 		      	});
-		      	self.seat_group.isSelected = false;
-				self.seat_group.name('circle-'+i+'-'+j);
-				self.seat_group.add(circle);
+		      	self.group.isSelected = false;
+				self.group.name('circle-' + i + '-' + j);
+				self.group.add(circle);
 	    	});
 	    });	    
 
-	    return this.seat_group;
+	    return this.group;
+	}
+
+	this.onClick  = function(x){
+		//console.log(x)
+		this.group.on('click', function(evt) {
+			x(self, evt);
+		});
+	}
+
+	this.onDragEnd  = function(x){
+		this.group.on('dragend', function(evt) {
+			x(evt, this, self);
+		});
+	}
+
+	this.getRows = function(){
+		return this.rows;
+	}
+
+	this.getCols = function(){
+		return this.cols;
 	}
 }

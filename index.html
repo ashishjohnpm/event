@@ -10,6 +10,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <script src="scripts/vendor/jquery-1.11.1.min.js"></script>
     <link rel="stylesheet" href="styles/vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/vendor/rzslider.min.css">
     <link rel="stylesheet" href="styles/main.css">
   </head>
   <body>
@@ -37,7 +38,7 @@
                   <li><a href="#4"><i aria-hidden="true" class="fa fa-text-height"></i><span>Text</span></a></li>
                 </ul>
               </div>
-              <div class="seatmap__info">
+              <div class="seatmap__info" ng-show="activeGroup">
                 <h3>{{group.id}}</h3>
                 <ul class="seatmap__list">
                   <li>
@@ -45,6 +46,9 @@
                   </li>
                   <li>
                     <label>Cols</label><span><input type="text" ng-model="cols"></span>
+                  </li>
+                  <li>
+                    <label>Rotate</label><rzslider rz-slider-model="slider.rotation" rz-slider-options="slider.options"></rzslider>
                   </li>
                   <li>
                     <label>Seats</label><span>{{rows * cols}}</span>
@@ -66,6 +70,7 @@
     <script src="scripts/vendor/tether.min.js"></script>
     <script src="scripts/vendor/bootstrap.min.js"></script>
     <script src="scripts/vendor/angular.min.js"></script>
+    <script src="scripts/vendor/rzslider.min.js"></script>
     <script src="scripts/vendor/konva.min.js"></script>
     <script src="scripts/seat.js"></script>
     <script src="scripts/group.js"></script>
