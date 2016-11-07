@@ -81,6 +81,7 @@ var App = {
 				if(item.isSelected) return;
 				
 				var $scope = getScope('myCtrl');
+				$scope.selectionRect = selectionRect;
 				$scope.rows = item.rows;
 		    	$scope.cols = item.cols;
 		    	$scope.activeGroup = item;
@@ -102,13 +103,26 @@ var App = {
 				selectionRect.visible(item.isSelected);
 				item.group.opacity(1);
     			item.group.scale({ x: 1.2, y: 1.2});
-				selectionRect.setAttrs(item.group.getClientRect());
+    			var dia = item.group.getClientRect();
+				selectionRect.setAttrs(dia);
+				//$scope.selectionRect.offsetX( dia.width / 2 );
+				//$scope.selectionRect.offsetY( dia.height / 2 );
 				self.layer.draw();
 			});
 
 			grps.onDragEnd(function(evt, item, obj){
 		    	if(obj.isSelected){
-			        selectionRect.setAttrs(obj.group.getClientRect());
+    				console.log(selectionRect.width(), 111)
+    				
+	    			var dia = obj.group.getClientRect();
+					selectionRect.width(dia.width());
+					selectionRect.height(dia.height());
+
+					console.log(selectionRect.width(),dia.width / 2, 2222)
+					selectionRect.offsetX( dia.width / 2 );
+					selectionRect.offsetY( dia.height / 2 );
+					obj.group.offsetX( dia.width / 2 );
+					obj.group.offsetY( dia.height / 2 );
 					self.layer.draw();
 				}
 			});
@@ -178,8 +192,17 @@ app.controller('myCtrl', function($scope) {
 	        ceil: 360,
 	        step: 10,
 	        onChange: function(id, value) {
-	            $scope.activeGroup.rotation = value;
+	        	var dia = $scope.activeGroup.group.getClientRect();
+	        	//$scope.selectionRect.setAttrs(dia);
+	        	//var w = $scope.selectionRect.width(dia.width);
+	        	//var h = $scope.selectionRect.height(dia.height);
+	        	console.log($scope.selectionRect.width())
+	            //$scope.activeGroup.rotation = value;
 	            $scope.activeGroup.group.rotation(value);
+
+	            //$scope.selectionRect.offsetX( dia.width / 2 );
+				//$scope.selectionRect.offsetY( dia.height / 2 );
+	            $scope.selectionRect.rotation(value);
 	            App.layer.draw();
 	        },
 	    }
