@@ -32,30 +32,49 @@
             <div class="seatmap__aside" ng-app="myApp" ng-controller="myCtrl">
               <div class="seatmap__nav">
                 <ul>
-                  <li><a href="#1"><i aria-hidden="true" class="fa fa-braille"></i><span>Section</span></a></li>
-                  <li><a href="#2"><i aria-hidden="true" class="fa fa-columns"></i><span>Table</span></a></li>
-                  <li><a href="#3"><i aria-hidden="true" class="fa fa-microphone"></i><span>Object</span></a></li>
-                  <li><a href="#4"><i aria-hidden="true" class="fa fa-text-height"></i><span>Text</span></a></li>
+                  <li><a href="#group-1"><i aria-hidden="true" class="fa fa-braille"></i><span>Section</span></a></li>
+                  <li><a href="#group-2"><i aria-hidden="true" class="fa fa-columns"></i><span>Table</span></a></li>
+                  <li><a href="#group-3"><i aria-hidden="true" class="fa fa-microphone"></i><span>Object</span></a></li>
+                  <li><a href="#group-4"><i aria-hidden="true" class="fa fa-text-height"></i><span>Text</span></a></li>
                 </ul>
               </div>
-              <div class="seatmap__info" ng-show="activeGroup">
-                <h3>{{group.id}}</h3>
-                <ul class="seatmap__list">
-                  <li>
-                    <label>Rows</label><span><input type="text" ng-model="rows"></span>
-                  </li>
-                  <li>
-                    <label>Cols</label><span><input type="text" ng-model="cols"></span>
-                  </li>
-                  <li>
-                    <label>Rotate</label><rzslider rz-slider-model="slider.rotation" rz-slider-options="slider.options"></rzslider>
-                  </li>
-                  <li>
-                    <label>Seats</label><span>{{rows * cols}}</span>
-                  </li>
-                </ul>
-                <button class="btn btn-primary btn-md">Submit</button>
-                <button class="btn btn-secondary btn-md">Cancel</button>
+              <div class="seatmap__info">
+                <div id="group-1" class="groups-info">
+                  <h3>{{group.id}}</h3>
+                  <ul class="seatmap__list">
+                    <li>
+                      <label>Rows</label><span><input type="text" ng-model="rows"></span>
+                    </li>
+                    <li>
+                      <label>Cols</label><span><input type="text" ng-model="cols"></span>
+                    </li>
+                    <li>
+                      <label>Rotate</label><rzslider rz-slider-model="slider.rotation" rz-slider-options="slider.options"></rzslider>
+                    </li>
+                    <li>
+                      <label>Seats</label><span>{{rows * cols}}</span>
+                    </li>
+                  </ul>
+                  <div>
+                    <button class="btn btn-primary btn-md">Submit</button>
+                    <button class="btn btn-secondary btn-md">Cancel</button>
+                  </div>
+                </div>
+                <div id="group-2" class="groups-info">
+
+                </div>
+                <div id="group-3" class="groups-info">
+                  <h3>Create Object</h3>
+                  <ul class="object-icons">
+                    <li class="active"><img src="icons/stage.png"><span>Stage</span></li>
+                    <li><img src="icons/food.png"><span>Food</span></li>
+                  </ul>
+                  <div>
+                    <button class="btn btn-primary btn-md obj-submit">Submit</button>
+                    <button class="btn btn-secondary btn-md">Cancel</button>
+                  </div>
+                </div>
+                
               </div>
             </div>
           </div>
@@ -74,6 +93,7 @@
     <script src="scripts/vendor/konva.min.js"></script>
     <script src="scripts/seat.js"></script>
     <script src="scripts/group.js"></script>
+    <script src="scripts/icon.js"></script>
     <script src="scripts/app.js"></script>
     <script src="scripts/script.js"></script>
     <script></script>

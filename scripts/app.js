@@ -26,8 +26,8 @@ var groups = [{
 	{
 		"rows": 1,
 		"cols": 2,
-		"draggable": false,
-		"rotation": 0,
+		"draggable": true,
+		"rotation": 60,
 		"seats": [[{
 			"color":"black",
 			"label": "A",
@@ -37,7 +37,8 @@ var groups = [{
 			"label": "B",
 			"icon": ""
 		}]]
-	}];
+	}
+	];
 
 var templateVars = null;
 

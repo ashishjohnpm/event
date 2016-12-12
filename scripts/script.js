@@ -14,10 +14,12 @@ module.exports = function() {
           }),
           selectedvalue = $(this).find('option:selected').text();
       $(this).wrap(wrapDiv).before(holderDiv);
-      $(holderDiv).text(selectedvalue);
+      $(holderDiv).text(selectedvalue);      
+
       $('body').on('click', holderDiv, function() {
           $(this).next('select.l-styled').trigger('click');
       });
+
       $('body').on('change', 'select.l-styled', function() {
           var $this = $(this),
               selectedvalue = $this.find('option:selected').text(),
@@ -34,6 +36,27 @@ module.exports = function() {
 var common = require('./common')();
 $(function() {
   common.customSelect();
+
+  $('body').on('click', '.obj-submit', function() {
+    var src = $('.object-icons li.active').find('img').attr('src');
+    var icon = new Icon({
+      url: src
+    });
+    App.layer.add(icon);
+    console.log(icon)
+  });
+
+  $('.object-icons').on('click', 'li', function() {
+    $('.object-icons li').removeClass('active');
+    $(this).addClass('active');
+  });
+
+  $('.seatmap__nav ul li').on('click', 'a', function() {
+      $(".groups-info").hide();
+      $($(this).attr('href')).show();
+      return false;
+  });
+
 });
 
 
