@@ -39,7 +39,24 @@ var groups = [{
 		}]]
 	}
 	];
-
+var icons = [
+	{
+		"id":"food",
+		"url":"icons/food.png",
+		"label" : "Food",
+		"x" : 100,
+		"y" : 100,
+		"draggable" : true
+	},
+	{
+		"id":"stage",
+		"url":"icons/stage.png",
+		"label" : "Stage",
+		"x" : 250,
+		"y" : 100,
+		"draggable" : false
+	},
+];
 var templateVars = null;
 
 var App = {
@@ -72,6 +89,11 @@ var App = {
 	    });
 
 	    this.layer.add(selectionRect);
+
+	    icons.forEach(function(icon) {
+	    	var icon_item = new Iconn(icon, self);
+			
+	    });
 
 	    groups.forEach(function(grp) {
 			var grps = new SeatGroup(grp);
