@@ -40,24 +40,42 @@ var Iconn = function (options, parent){
 
         group.add(imageObj);
 
+        var text = new Konva.Text({
+		  //x: box.getWidth()/2,
+		  x: imageObj.getAttr('x'),
+		  y: imageObj.getAttr('y') + imageObj.height(),
+		  text: settings.label,
+		  fontSize: 20,
+		  fontFamily: 'Calibri',
+		  fill: 'green'
+		});
+        group.add(text);		
+
 	    var box = new Konva.Rect({
-            x: imageObj.position().x,
-            y: imageObj.position().y,
-            width: imageObj.width(),
-            height: imageObj.height(),
-            stroke: 'black',
-            strokeWidth: 2,
+            x: imageObj.getAttr('x'),
+		 	y: imageObj.getAttr('y'),
+            stroke: 'red',
+            strokeWidth: 1,
         });
 
+        var dia = group.getClientRect();
+		box.width(dia.width);
+		box.height(dia.height);
+
+		/*text.setOffset({
+	      x: text.getWidth()  / 2 
+	    });*/
+
+        group.add(text);
         group.add(box);
-        var dia = box.getClientRect();console.log(dia)
+        var dia = box.getClientRect();
 		//box.setAttrs(dia);
 		//console.log(group.getClientRect())
 
         addAnchor(group, dia.x, dia.y, 'topLeft');
 	    addAnchor(group, dia.x + dia.width, dia.y, 'topRight');
-	    addAnchor(group, dia.x, dia.y + dia.height, 'bottomRight');
-	    addAnchor(group, dia.x + dia.width, dia.y + dia.height, 'bottomLeft');
+	    addAnchor(group, dia.x + dia.width, dia.y + dia.height, 'bottomRight');
+	    addAnchor(group, dia.x , dia.y + dia.height, 'bottomLeft');
 	    
 	    group.on('mouseover', function() {
             if(settings.draggable === true) document.body.style.cursor = 'move';
@@ -75,9 +93,9 @@ var Iconn = function (options, parent){
             x: x,
             y: y,
             stroke: '#666',
-            fill: '#ddd',
-            strokeWidth: 2,
-            radius: 8,
+            fill: 'red',
+            strokeWidth: 1,
+            radius: 5,
             name: name,
             draggable: true,
             dragOnTop: false
@@ -123,7 +141,6 @@ var Iconn = function (options, parent){
         var rect = group.get('Rect')[0];
         var anchorX = activeAnchor.getX();
         var anchorY = activeAnchor.getY();
-
         // update anchor positions
         switch (activeAnchor.getName()) {
             case 'topLeft':
@@ -151,6 +168,8 @@ var Iconn = function (options, parent){
         if(width && height) {
             rect.width(width);
             rect.height(height);
+            group.width(width);
+            group.height(height);
         }
     }
 }
