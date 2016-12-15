@@ -8,17 +8,26 @@ var Iconn = function (options, parent){
 	    draggable: false
     }, options );
 
+    var group = new Konva.Group({
+			        draggable: settings.draggable
+			    });
+
 	this.icon = new Image();
 
 	this.icon.onload = function() {
 		var img = drawImage(this);
 		var grp = boundRectangle(img);
-
-		parent.layer.add(grp);
+		parent.layer.add(group);
 		parent.stage.add(parent.layer);
 	};
 
 	this.icon.src = settings.url;
+
+	this.onClick = function(callback){
+		group.on('click', function(evt) {
+			callback(evt);
+		});
+	};
 
 	function drawImage(imageObj){
 		var image = new Konva.Image({
@@ -28,18 +37,12 @@ var Iconn = function (options, parent){
 		    width: settings.width,
 		    height: settings.height
 	  	});
+        group.setAttrs({'x' : image.getAttr('x')}, {'y' : image.getAttr('y')});
+        group.add(image);
         return image;
 	}
 
 	function boundRectangle(imageObj){
-		var group = new Konva.Group({
-	        x: imageObj.position().x,
-	        y: imageObj.position().y,
-	        draggable: settings.draggable
-	    });
-
-        group.add(imageObj);
-
         var text = new Konva.Text({
 		  //x: box.getWidth()/2,
 		  x: imageObj.getAttr('x'),
@@ -49,7 +52,7 @@ var Iconn = function (options, parent){
 		  fontFamily: 'Calibri',
 		  fill: 'green'
 		});
-        group.add(text);		
+        group.add(text);
 
 	    var box = new Konva.Rect({
             x: imageObj.getAttr('x'),
@@ -84,8 +87,6 @@ var Iconn = function (options, parent){
         group.on('mouseout', function() {
             document.body.style.cursor = 'default';
         });
-
-        return group;
 	}
 
 	function addAnchor(group, x, y, name) {
@@ -131,13 +132,13 @@ var Iconn = function (options, parent){
     }
 
     function update(activeAnchor) {
-        var group = activeAnchor.getParent();
+        //var group = activeAnchor.getParent();
 
         var topLeft = group.get('.topLeft')[0];
         var topRight = group.get('.topRight')[0];
         var bottomRight = group.get('.bottomRight')[0];
         var bottomLeft = group.get('.bottomLeft')[0];
-        
+
         var rect = group.get('Rect')[0];
         var anchorX = activeAnchor.getX();
         var anchorY = activeAnchor.getY();

@@ -54,7 +54,7 @@ var icons = [
 		"label" : "Stage",
 		"x" : 250,
 		"y" : 100,
-		"draggable" : false
+		"draggable" : true
 	},
 ];
 var templateVars = null;
@@ -92,7 +92,14 @@ var App = {
 
 	    icons.forEach(function(icon) {
 	    	var icon_item = new Iconn(icon, self);
-			
+			icon_item.onClick(function(evt){
+				var $scope = getScope('myCtrl');
+		    	$scope.activeGroup = evt.currentTarget;
+		    	//$scope.activeGroup.offsetX($scope.activeGroup.getAttr('x') + $scope.activeGroup.width()/2);
+				//$scope.activeGroup.offsetY($scope.activeGroup.getAttr('y') + $scope.activeGroup.height()/2);
+		    	$scope.rotation = $scope.activeGroup.rotation();
+				$scope.$apply();
+			});
 	    });
 
 	    groups.forEach(function(grp) {
@@ -231,6 +238,19 @@ app.controller('myCtrl', function($scope) {
 	    }
     };
     $scope.activeGroup = null;
+    $scope.icon_slider = {
+    	rotation: 0,
+	    options: {
+	        floor: 0,
+	        ceil: 360,
+	        step: 10,
+	        onChange: function(id, value) {
+	        	console.log($scope.activeGroup, value)
+	        	$scope.activeGroup.rotation(value);
+	        	App.layer.draw();
+	        },
+	    }
+    };
 });
 
 function getScope(ctrlName) {
