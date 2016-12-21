@@ -1,11 +1,11 @@
 var Seat = function (options){
 	//console.log($scope)
 	var settings = $.extend({
-		radius: 40,
+		radius: 15,
         color: "red",
         icon: false,
 	  	stroke: 'black',
-	  	strokeWidth: 5
+	  	strokeWidth: 2
     }, options );
 
     this.circle = new Konva.Circle({

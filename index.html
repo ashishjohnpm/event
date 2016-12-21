@@ -25,7 +25,7 @@
             <div class="seatmap__canvas">
             <div id="seatmap-canvas" class="canvas-wrap"></div>
               <!-- <canvas id="seatmap-canvas" width="100%" height="450"></canvas> -->
-              <div role="alert" class="alert alert-info alert-dismissible fade in">
+              <div role="alert" class="alert alert-info alert-dismissible fade out">
                 <button type="button" data-dismiss="alert" aria-label="Close" class="close"><span aria-hidden="true">×</span></button><strong>Click and drag the canvas to reposition.</strong> SHIFT + click to select multiple objects and drag to move as a group.
               </div>
             </div>
@@ -63,15 +63,18 @@
                 <div id="group-2" class="groups-info">
 
                 </div>
-                <div id="group-3" class="groups-info">
+                <div id="group-3" class="groups-info" style="display: none;">
                   <h3>Create Object</h3>
                   <ul class="object-icons">
                     <li class="active"><img src="icons/stage.png"><span>Stage</span></li>
-                    <li><img src="icons/food.png"><span>Food</span></li>
+                    <li><img src="icons/food.png"><span>Food</span></li><br>
+                    <li><img src="icons/bath.png"><span>Bath</span></li>
+                    <li><img src="icons/mic.png"><span>Mic</span></li><br>
+                    <li><img src="icons/exit.jpg"><span>Exit</span></li>
                   </ul>
-                  <li>
+                  <div style="clear: both;">
                       <label>Rotate</label><rzslider rz-slider-model="icon_slider.rotation" rz-slider-options="icon_slider.options"></rzslider>
-                    </li>
+                  </div>
                   <div>
                     <button class="btn btn-primary btn-md obj-submit">Submit</button>
                     <button class="btn btn-secondary btn-md">Cancel</button>

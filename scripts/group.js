@@ -16,10 +16,10 @@ function SeatGroup(options){
 
     var settings = $.extend({}, defaults, options);
 
-	this.drawGroup = function(){
+	this.drawGroup = function(){console.log(Math.floor(Math.random() * 3) + 1)
 		this.group = new Konva.Group({
-	        x: 120,
-	        y: 40,
+	        x: 60 * Math.floor(Math.random() * 12) + 1 ,
+	        y: 100 * Math.floor(Math.random() * 4) + 1 ,
 	        rotation: settings.rotation,
 	        draggable: settings.draggable,
 	        opacity: settings.opacity
