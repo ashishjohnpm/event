@@ -7,19 +7,19 @@ var groups = [{
 		"draggable": true,
 		"rotation": 0,
 		"seats": [[{
-			"color":"red",
+			"color":"black",
 			"label": "A",
 			"icon": ""
 		}, {
-			"color":"yellow",
+			"color":"black",
 			"label": "B",
 			"icon": ""
 		}],[{
-			"color":"yellow",
+			"color":"black",
 			"label": "B",
 			"icon": ""
 		}, {
-			"color":"yellow",
+			"color":"black",
 			"label": "B",
 			"icon": ""
 		}]]
@@ -34,7 +34,7 @@ var groups = [{
 			"label": "A",
 			"icon": ""
 		}],[{
-			"color":"green",
+			"color":"black",
 			"label": "B",
 			"icon": ""
 		}]]
@@ -148,7 +148,7 @@ var App = {
 				App.allgroups.forEach(function(el){
 					//console.log(el)
 					el.isSelected = false;
-		    		el.group.opacity(0.5);	
+		    		el.group.opacity(0.9);	
 		    		el.group.scale({ x: 1, y: 1});
 				});			    	
 		    	

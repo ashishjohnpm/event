@@ -10,7 +10,7 @@ function SeatGroup(options){
     	rows: 0,
     	cols:0,
     	rotation:0,
-    	opacity: 0.5, 
+    	opacity: 0.9, 
     	draggable: true
     };
 
