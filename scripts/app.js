@@ -163,8 +163,8 @@ var App = {
     			item.group.scale({ x: 1.2, y: 1.2});
     			var dia = item.group.getClientRect();
 				selectionRect.setAttrs(dia);
-				//$scope.selectionRect.offsetX( dia.width / 2 );
-				//$scope.selectionRect.offsetY( dia.height / 2 );
+				$scope.selectionRect.offsetX( 0 );
+				$scope.selectionRect.offsetY( 0 );
 				self.layer.draw();
 				$('.groups-info').hide();
 				$('#group-1').show();
@@ -174,6 +174,8 @@ var App = {
 		    	if(obj.isSelected){    				
 	    			var dia = obj.group.getClientRect();
     				selectionRect.setAttrs(dia);
+    				selectionRect.offsetX( 0 );
+					selectionRect.offsetY( 0 );
 					/*selectionRect.width(dia.width);
 					selectionRect.height(dia.height);
 					console.log(selectionRect.width(),dia.width / 2, 2222)
