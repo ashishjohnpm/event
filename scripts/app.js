@@ -134,7 +134,7 @@ var App = {
 			var group = grps.drawGroup();
 
 			grps.onClick(function(item, evt){
-				if(item.isSelected) return;
+				//if(item.isSelected) return;
 				$('.groups-info').hide();
 				$('#group-1').show();
 				
